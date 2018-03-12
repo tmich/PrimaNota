@@ -37,7 +37,9 @@ namespace PrimaNota
                 Descrizione = "Tabacchi",
                 Tipo = TipoMovimento.Entrata,
                 Risorsa = Risorsa.Cassa,
-                Importo = 250.00M
+                Importo = 250.00M,
+                Operatore = "LILIANA",
+                Turno = Turno.Mattina
             });
 
             movimenti.Add(new Movimento
@@ -47,7 +49,9 @@ namespace PrimaNota
                 Descrizione = "Giochi bambini",
                 Tipo = TipoMovimento.Entrata,
                 Risorsa = Risorsa.Cassa,
-                Importo = 40.00M
+                Importo = 40.00M,
+                Operatore = "LILIANA",
+                Turno = Turno.Mattina
             });
 
             movimenti.Add(new Movimento
@@ -57,7 +61,9 @@ namespace PrimaNota
                 Descrizione = "Gratta e Vinci",
                 Tipo = TipoMovimento.Entrata,
                 Risorsa = Risorsa.Cassa,
-                Importo = 240.00M
+                Importo = 240.00M,
+                Operatore = "GIAMBATTISTA",
+                Turno = Turno.Pomeriggio
             });
 
             movimenti.Add(new Movimento
@@ -67,7 +73,9 @@ namespace PrimaNota
                 Descrizione = "Vincite Gratta e Vinci",
                 Tipo = TipoMovimento.Uscita,
                 Risorsa = Risorsa.Cassa,
-                Importo = 20.00M
+                Importo = 20.00M,
+                Operatore = "GRAZIA",
+                Turno = Turno.Unico
             });
 
             movimenti.Add(new Movimento
@@ -77,7 +85,9 @@ namespace PrimaNota
                 Descrizione = "Bar",
                 Tipo = TipoMovimento.Entrata,
                 Risorsa = Risorsa.Cassa,
-                Importo = 350.00M
+                Importo = 350.00M,
+                Operatore = "IEZZI",
+                Turno = Turno.Unico
             });
 
             //txtCassetta.DataBindings.Add("Text", cassetta, "", false, DataSourceUpdateMode.OnValidation);
@@ -130,6 +140,8 @@ namespace PrimaNota
             {
                 Id = m.Id,
                 Data = m.Data.Date,
+                Turno = m.Turno.ToString()[0],
+                Operatore = m.Operatore,
                 Descrizione = m.Descrizione,
                 Tipo = m.Tipo.ToString(),
                 Risorsa = m.Risorsa.ToString(),
@@ -140,7 +152,8 @@ namespace PrimaNota
             gridmov.DataSource = source;
             gridmov.ClearSelection();
             gridmov.Columns["Id"].Visible = false;
-            gridmov.Columns["Descrizione"].Width = 400;
+            gridmov.Columns["Turno"].Width = 20;
+            gridmov.Columns["Descrizione"].Width = 200;
 
             txtCassetta.Text = cassetta.ToString("0.00");
             txtTotEntrCas.Text = EntrateCassa.ToString("0.00");
