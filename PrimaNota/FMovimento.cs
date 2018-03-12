@@ -21,7 +21,9 @@ namespace PrimaNota
             Movimento = mov;
             dtMovimento.Value = Movimento.Data;
             cmbRisorsa.SelectedIndex = Movimento.Risorsa == Risorsa.Cassa ? 0 : 1;
-            cmbTipo.SelectedIndex = Movimento.Tipo == TipoMovimento.Entrata ? 0 : 1;
+            //cmbTipo.SelectedIndex = Movimento.Tipo == TipoMovimento.Entrata ? 0 : 1;
+            rbEntrata.Checked = (Movimento.Tipo == TipoMovimento.Entrata);
+            rbUscita.Checked = !rbEntrata.Checked;
             txtDescrizione.Text = Movimento.Descrizione;
             txtImporto.Value = Movimento.Importo;
 
@@ -60,7 +62,8 @@ namespace PrimaNota
             Movimento.Descrizione = txtDescrizione.Text;
             Movimento.Importo = txtImporto.Value;
             Movimento.Risorsa = cmbRisorsa.SelectedIndex == 0 ? Risorsa.Cassa : Risorsa.Banca;
-            Movimento.Tipo = cmbTipo.SelectedIndex == 0 ? TipoMovimento.Entrata : TipoMovimento.Uscita;
+            //Movimento.Tipo = cmbTipo.SelectedIndex == 0 ? TipoMovimento.Entrata : TipoMovimento.Uscita;
+            Movimento.Tipo = rbEntrata.Checked ? TipoMovimento.Entrata : TipoMovimento.Uscita;
 
             DialogResult = DialogResult.OK;
 

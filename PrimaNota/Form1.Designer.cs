@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbTurno = new System.Windows.Forms.ComboBox();
@@ -47,9 +48,13 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.gridmov = new System.Windows.Forms.DataGridView();
             this.txtCassetta = new System.Windows.Forms.NumericUpDown();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label10 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridmov)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCassetta)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // dateTimePicker1
@@ -116,7 +121,7 @@
             // 
             this.btnAggiungiMovimento.Location = new System.Drawing.Point(3, 7);
             this.btnAggiungiMovimento.Name = "btnAggiungiMovimento";
-            this.btnAggiungiMovimento.Size = new System.Drawing.Size(96, 36);
+            this.btnAggiungiMovimento.Size = new System.Drawing.Size(94, 36);
             this.btnAggiungiMovimento.TabIndex = 7;
             this.btnAggiungiMovimento.Text = "Nuovo";
             this.btnAggiungiMovimento.UseVisualStyleBackColor = true;
@@ -215,7 +220,7 @@
             this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(860, 20);
+            this.label9.Location = new System.Drawing.Point(15, 608);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(138, 18);
             this.label9.TabIndex = 17;
@@ -227,6 +232,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.gridmov);
             this.panel1.Controls.Add(this.btnAggiungiMovimento);
             this.panel1.Location = new System.Drawing.Point(15, 91);
@@ -238,6 +244,7 @@
             // 
             this.gridmov.AllowUserToAddRows = false;
             this.gridmov.AllowUserToDeleteRows = false;
+            this.gridmov.AllowUserToOrderColumns = true;
             this.gridmov.AllowUserToResizeRows = false;
             this.gridmov.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
@@ -262,7 +269,7 @@
             this.txtCassetta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCassetta.DecimalPlaces = 2;
             this.txtCassetta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
-            this.txtCassetta.Location = new System.Drawing.Point(875, 48);
+            this.txtCassetta.Location = new System.Drawing.Point(18, 640);
             this.txtCassetta.Maximum = new decimal(new int[] {
             99999,
             0,
@@ -274,11 +281,42 @@
             this.txtCassetta.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.txtCassetta.ThousandsSeparator = true;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(103, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(94, 36);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Stampa";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Gold;
+            this.label10.Location = new System.Drawing.Point(344, 24);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(123, 17);
+            this.label10.TabIndex = 19;
+            this.label10.Text = "mese? settimana?";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::PrimaNota.Properties.Resources.caffe_elite;
+            this.pictureBox1.Location = new System.Drawing.Point(914, 13);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(80, 72);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 20;
+            this.pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1010, 720);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.txtCassetta);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label9);
@@ -296,12 +334,15 @@
             this.Controls.Add(this.cmbTurno);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dateTimePicker1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(800, 600);
             this.Name = "Form1";
-            this.Text = "Prima Nota";
+            this.Text = "Prima Nota - Palmi srl";
+            this.Shown += new System.EventHandler(this.Form1_Shown);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridmov)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCassetta)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -327,6 +368,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.DataGridView gridmov;
         private System.Windows.Forms.NumericUpDown txtCassetta;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 
