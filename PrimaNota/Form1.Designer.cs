@@ -217,7 +217,7 @@
             // 
             // label9
             // 
-            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.Location = new System.Drawing.Point(15, 608);
@@ -250,7 +250,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gridmov.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.gridmov.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            this.gridmov.BackgroundColor = System.Drawing.Color.White;
             this.gridmov.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.gridmov.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridmov.Location = new System.Drawing.Point(3, 49);
@@ -266,7 +266,7 @@
             // 
             // txtCassetta
             // 
-            this.txtCassetta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCassetta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.txtCassetta.DecimalPlaces = 2;
             this.txtCassetta.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
             this.txtCassetta.Location = new System.Drawing.Point(18, 640);
@@ -302,6 +302,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::PrimaNota.Properties.Resources.caffe_elite;
             this.pictureBox1.Location = new System.Drawing.Point(914, 13);
             this.pictureBox1.Name = "pictureBox1";
@@ -314,6 +315,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1010, 720);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label10);
