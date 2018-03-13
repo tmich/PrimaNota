@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PrimaNota.Models;
+using System.Diagnostics;
+using System.Data.Entity;
 
 namespace PrimaNota
 {
@@ -14,91 +17,29 @@ namespace PrimaNota
     {
         List<Movimento> movimenti;
         decimal cassetta;
+        static int counter;
         //BindingSource source;
         
         public Form1()
         {
             InitializeComponent();
-            cmbTurno.SelectedIndex = 0;
-            CreaDati();
-            //source = new BindingSource();
-            //source.DataSource = movimenti.ToList();
-            //gridmov.DataSource = movimenti.ToList();
-        }
-
-        private void CreaDati()
-        {
-            movimenti = new List<Movimento>();
-
-            movimenti.Add(new Movimento
+            counter = 1;
+            
+            using (var ctx = new DAL.PrimaNotaContext())
             {
-                Id = 1,
-                Data = DateTime.Now,
-                Descrizione = "Tabacchi",
-                Tipo = TipoMovimento.Entrata,
-                Risorsa = Risorsa.Cassa,
-                Importo = 250.00M,
-                Operatore = "LILIANA",
-                Turno = Turno.Mattina
-            });
-
-            movimenti.Add(new Movimento
-            {
-                Id = 2,
-                Data = DateTime.Now,
-                Descrizione = "Giochi bambini",
-                Tipo = TipoMovimento.Entrata,
-                Risorsa = Risorsa.Cassa,
-                Importo = 40.00M,
-                Operatore = "LILIANA",
-                Turno = Turno.Mattina
-            });
-
-            movimenti.Add(new Movimento
-            {
-                Id = 3,
-                Data = DateTime.Now,
-                Descrizione = "Gratta e Vinci",
-                Tipo = TipoMovimento.Entrata,
-                Risorsa = Risorsa.Cassa,
-                Importo = 240.00M,
-                Operatore = "GIAMBATTISTA",
-                Turno = Turno.Pomeriggio
-            });
-
-            movimenti.Add(new Movimento
-            {
-                Id = 4,
-                Data = DateTime.Now,
-                Descrizione = "Vincite Gratta e Vinci",
-                Tipo = TipoMovimento.Uscita,
-                Risorsa = Risorsa.Cassa,
-                Importo = 20.00M,
-                Operatore = "GRAZIA",
-                Turno = Turno.Unico
-            });
-
-            movimenti.Add(new Movimento
-            {
-                Id = 5,
-                Data = DateTime.Now,
-                Descrizione = "Bar",
-                Tipo = TipoMovimento.Entrata,
-                Risorsa = Risorsa.Cassa,
-                Importo = 350.00M,
-                Operatore = "IEZZI",
-                Turno = Turno.Unico
-            });
-
-            //txtCassetta.DataBindings.Add("Text", cassetta, "", false, DataSourceUpdateMode.OnValidation);
-            //txtTotEntrCas.DataBindings.Add("Text", EntrateCassa, "", false, DataSourceUpdateMode.OnValidation);
-            //txtTotUscCas.DataBindings.Add("Text", UsciteCassa, "", false, DataSourceUpdateMode.OnValidation);
-            //txtTotEntrBan.DataBindings.Add("Text", EntrateBanca, "", false, DataSourceUpdateMode.OnValidation);
-            //txtTotUscBan.DataBindings.Add("Text", UsciteBanca, "", false, DataSourceUpdateMode.OnValidation);
-
-            //gridmov.DataBindings.Add("DataSource", movimenti.ToList(), "", false, DataSourceUpdateMode.OnPropertyChanged);
-
+                movimenti = ctx.Movimenti
+                    .Where(m => DbFunctions.TruncateTime(m.Data) == Giornata)
+                    .ToList();
+            }
             cassetta = 250.00M;
+        }
+        
+        private DateTime Giornata
+        {
+            get
+            {
+                return dateTimePicker1.Value.Date;
+            }
         }
 
         private decimal EntrateCassa
@@ -170,8 +111,8 @@ namespace PrimaNota
 
             if (fm.DialogResult == DialogResult.OK)
             {
+                m.Id = counter++;
                 movimenti.Add(m);
-                //source.ResetBindings(true);
                 Aggiorna();
             }
         }
@@ -184,12 +125,11 @@ namespace PrimaNota
             long id = (long)gridmov["Id", e.RowIndex].Value;
             var m = movimenti.First(mv => mv.Id == id);
             FMovimento fm = new FMovimento(m);
-            fm.ShowDialog();
+            fm.ShowDialog(this);
 
             if (fm.DialogResult == DialogResult.OK)
             {
                 movimenti[e.RowIndex] = m;
-                //source.ResetBindings(true);
                 Aggiorna();
             }
 
